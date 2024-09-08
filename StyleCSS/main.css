@@ -5,24 +5,57 @@
     70%  {background-color:rgb(74, 255, 128);}
     100% {background-color:rgb(255, 255, 0);}
   }
-@keyframes LinkAnim {
-    0%   {color:rgb(255, 0, 0);}
-    20%  {color:rgb(87, 15, 255);}
-    50%  {color:rgb(238, 255, 0);}
-    60%  {color:rgb(229, 255, 0);}
-    100% {color:rgb(255, 0, 0);}
+.button{
+    border: 2px solid var(--boarder-color);
+    background-color: var(--background-color);
+    position: fixed;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    right: 20px;
+    top: 25px;
+}
+.title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title__header{
+    width: auto;
+    font-size: 80px;
+    margin: 10px;
+    margin-bottom: 0px;
+    padding: 0px 12px 10px 12px;
+    text-align: center;
+    background-color: var(--text-back-color);
+    border-radius: 30px;
+}
+.title__text{
+    width: auto;
+    margin-top: -10px;
+    padding: 2px 6px 2px 6px;
+    text-align: center;
+    border-radius: 0px 0px 7px 7px;
+    background-color: var(--text-back-color);
 }
 body {
+    color: var(--text-color);
+    background-color: var(--background-color);
     padding: 20px;
     font-size: 18px; 
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: rgb(255, 255, 0);;
-
-    animation-delay: 2s;
-    /*animation-name: BackgroundAnim;
-    animation-duration: 50s;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;*/
+}
+:root{
+    --background-color:rgb(255, 255, 255);
+    --text-back-color: rgb(255, 247, 0);
+    --text-color: black;
+    --boarder-color: black;
+}
+body.dark-mode{
+    --background-color:rgb(0, 0, 0);
+    --text-back-color: rgb(182, 0, 0);
+    --text-color: white;
+    --boarder-color: white;
 }
 img{
     height: auto;
@@ -31,9 +64,13 @@ img{
 .cover{
     width: 360px;
     margin-left: 10px;
+    transition: all .2s ease;
     img{
         border-radius: 1em;
-        box-shadow: 5px 5px rgb(255, 255, 255);
+        border: 2px solid var(--boarder-color);
+    }
+    &:active{
+        transform: scale(0.98);
     }
 }
 .content{
@@ -49,14 +86,18 @@ img{
     margin: 10px;
 }
 h2{
-    font-size: 40px; 
+    background-color: var(--text-back-color);
+    font-size: 40px;
+    display: inline;
+    padding: 0px 10px 0px 10px;
+    border-radius: 8px;
 }
 .link{
     font-size: 32px;
     margin-top: -15px;
     margin-bottom: 10px;
     margin-left: 45px;
-    color: rgb(225, 0, 0);
+    color: var(--text-color);
     /*text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;*/
     animation-delay: 2s;
     animation-name: LinkAnim;
@@ -65,16 +106,54 @@ h2{
     animation-timing-function: ease-in-out;
 }
 audio{
+    border: 1.5px solid black;
+    border-radius: 30px;
     margin-top: 10px;
 }
-.main_title{
-    font-size: 80px;
-    margin: 10px;
-    text-align: center;
-    /*background-color: rgb(255, 255, 0);*/
-}
-.under_main_title{
-    margin-top: -6px;
-    text-align: center;
-    /*background-color: rgb(255, 255, 0);*/
-}
+@media (max-width: 576px) {
+    .title__header{
+        font-size: 60px;
+        border-radius: 20px;
+    }
+    body{
+        font-size: 15px;
+        padding: 0px;
+    }
+    .title__text{
+        font-size: 16px;
+        border-radius: 5px;
+    }
+    .audio{
+        width: 140px;
+        display: none;
+    }
+    h2{
+        font-size: 30px;
+    }
+    .cover{
+        max-width: 40%;
+    }
+    p{
+        margin-bottom: 0px;
+    }
+    .track{
+        gap: 8px;
+    }
+    .button{
+        top: 600px;
+    }
+ }
+ @media (max-width: 400px) {
+    .content{
+        gap: 15px;
+    }
+    .title__header{
+        font-size: 50px;
+        border-radius: 16px;
+    }
+    .title__text{
+        font-size: 14px;
+        border-radius: 4px;
+        margin-bottom: 8px;
+    }
+ }
