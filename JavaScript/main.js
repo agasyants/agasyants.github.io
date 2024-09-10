@@ -1,7 +1,14 @@
 window.addEventListener('load', function () {
     const btn = document.getElementById('themeSwitcher');
     btn.addEventListener('click', function () {
-        document.body.classList.toggle('dark-mode');
+        if (document.body.classList.contains('dark-mode')) {
+            document.body.classList.remove('dark-mode');
+            document.body.classList.add('alt-mode');
+        } else if (document.body.classList.contains('alt-mode')) {
+            document.body.classList.remove('alt-mode');
+        } else {
+            document.body.classList.add('dark-mode');
+        }
     });
     let audios = []
     const tracksEl = document.getElementsByClassName('track')
@@ -20,7 +27,6 @@ window.addEventListener('load', function () {
                 } else {
                     audio.pause();
                 }
-                
             });
         }
     }
