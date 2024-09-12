@@ -5,6 +5,11 @@
     70%  {background-color:rgb(74, 255, 128);}
     100% {background-color:rgb(255, 255, 0);}
   }
+@keyframes Boombox {
+    0%   {scale:100%;}
+    50%  {scale:90%;}
+    100% {scale:100%;}
+}
 .button{
     border: 2px solid var(--boarder-color);
     background-color: rgba(0, 0, 0, 0);
@@ -48,15 +53,17 @@ body{
 }
 :root{
     --background-color:white;
-    --text-back-color: black;
+    --left-pad: 0px;
+    --text-back-color: rgba(0,0,0,0);
     --main-text-color: black;
     --boarder-color: black;
-    --title-text-color: yellow;
-    --track-name-color: yellow;
+    --title-text-color: black;
+    --track-name-color: black;
     --audio-boarder-color: black;
 }
 body.dark-mode{
-    --background-color:black;
+    --left-pad: 10px;
+    --background-color: black;
     --text-back-color: yellow;
     --main-text-color: white;
     --boarder-color: white;
@@ -65,13 +72,14 @@ body.dark-mode{
     --audio-boarder-color: black;
 }
 body.alt-mode{
+    --left-pad: 10px;
     --background-color:rgb(169, 231, 217);
-    --text-back-color: rgb(158, 138, 209);
-    --main-text-color: rgb(168, 114, 197);
-    --boarder-color: rgb(241, 234, 150);
-    --title-text-color: rgb(241, 234, 150);
-    --track-name-color: rgb(241, 234, 150);
-    --audio-boarder-color: rgb(175, 158, 216);
+    --text-back-color: white;
+    --main-text-color: black;
+    --boarder-color: white;
+    --title-text-color: black;
+    --track-name-color: black;
+    --audio-boarder-color: white;
 }
 img{
     height: auto;
@@ -87,8 +95,11 @@ img{
         border: 2px solid var(--boarder-color);
     }
     &:active{
-        transform: scale(0.98);
+        transform: scale(0.96);
     }
+    /*animation-name: Boombox;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;*/
 }
 .content{
     gap: 30px;
@@ -106,8 +117,9 @@ h2{
     background-color: var(--text-back-color);
     color: var(--track-name-color);
     font-size: 44px;
-    display: inline;
-    padding: 0px 10px 6px 10px;
+    display: inline-block;
+    margin: 0px;
+    padding: 0px 10px 6px var(--left-pad);
     border-radius: 8px;
 }
 .link{
@@ -155,7 +167,7 @@ audio{
         gap: 8px;
     }
     .button{
-        top: 600px;
+        top: 500px;
     }
     .link{
         font-size: 30px;
@@ -178,5 +190,8 @@ audio{
     .link{
         font-size: 25px;
         width: 236px;
+    }
+    h2{
+        width: 10px;
     }
  }
