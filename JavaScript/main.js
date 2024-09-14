@@ -16,18 +16,38 @@ window.addEventListener('load', function () {
         const img = track.getElementsByTagName('img')[0] || null;
         const audio = track.getElementsByTagName('audio')[0] || null;
         if (img && audio) {
-            audios.push(audio)
+            audio.addEventListener('play', function () {
+                Click();
+            })
+            audio.addEventListener('pause', function () {
+                Click();
+            })
+            audio.addEventListener('ended', function () {
+                Click();
+            })
+            audios.push(audio);
             img.addEventListener('click', function () {
                 if (audio.paused) {
-                    audios.forEach(a => {
-                        a.pause()
-                        if (a !== audio)
-                        a.currentTime = 0});
                     audio.play();
                 } else {
                     audio.pause();
                 }
-            });
+            })
         }
-    }
-});
+        function Click(){
+            if (audio.paused) {
+                img.classList.add('pause');
+            } else {
+                audios.forEach(a => {
+                    if (a !== audio){
+                        a.currentTime = 0
+                        a.pause()}});
+                const boombox = document.getElementsByClassName('boombox')[0];
+                boombox && boombox.classList.remove('boombox');
+                const pause = document.getElementsByClassName('pause')[0];
+                pause && pause.classList.remove('pause');
+                img.classList.add('boombox');
+            }
+        }
+    };
+})

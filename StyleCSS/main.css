@@ -7,18 +7,29 @@
   }
 @keyframes Boombox {
     0%   {scale:100%;}
-    50%  {scale:90%;}
+    50%  {scale:98%;}
     100% {scale:100%;}
+}
+.boombox{
+    animation-name: Boombox;
+    animation-duration: 0.5s;
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+    animation-delay: 0.3s;
+}
+.pause{
+    animation-play-state: paused;
 }
 .button{
     border: 2px solid var(--boarder-color);
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 40px;
     height: 40px;
     border-radius: 20px;
     right: 20px;
-    top: 25px;
+    top: 30px;
+    z-index: 100;
 }
 .title{
     display: flex;
@@ -95,11 +106,8 @@ img{
         border: 2px solid var(--boarder-color);
     }
     &:active{
-        transform: scale(0.96);
+        transform: scale(0.98);
     }
-    /*animation-name: Boombox;
-    animation-duration: 0.5s;
-    animation-iteration-count: infinite;*/
 }
 .content{
     gap: 30px;
@@ -167,11 +175,14 @@ audio{
         gap: 8px;
     }
     .button{
-        top: 500px;
+        top: 480px;
     }
     .link{
         font-size: 30px;
         width: 284px;
+    }
+    h2{
+        padding-bottom: 3px;
     }
  }
  @media (max-width: 400px) {
@@ -190,8 +201,5 @@ audio{
     .link{
         font-size: 25px;
         width: 236px;
-    }
-    h2{
-        width: 10px;
     }
  }
